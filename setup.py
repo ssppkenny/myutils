@@ -1,6 +1,6 @@
 from distutils.core import setup, Extension
 import numpy 
-
+import sys
 from os import getenv
 
 PLATFORM = sys.platform
