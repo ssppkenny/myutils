@@ -8,7 +8,7 @@ PLATFORM = sys.platform
 if getenv('LIBLINK'):
     PLATFORM = 'android'
 
-extension = Extension('utils', ['utils.c', 'pdf.m'], libraries=[], library_dirs=[], include_dirs=[numpy.get_include()], extra_compile_args=["-framework Foundation -framework CoreFoundation"])
+extension = Extension('utils', ['utils.c', 'pdf.m'], libraries=[], library_dirs=[], include_dirs=[numpy.get_include()], extra_compile_args=["-framework CoreFoundation -framework CoreGraphics"])
 setup(name="utils",
       version="0.0.6",
       ext_modules = [
