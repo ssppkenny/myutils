@@ -8,9 +8,9 @@ PLATFORM = sys.platform
 if getenv('LIBLINK'):
     PLATFORM = 'android'
 
-extension = Extension('utils', ['utils.c', 'pdf.m'], libraries=[], library_dirs=[], include_dirs=[numpy.get_include()])
+extension = Extension('utils', ['utils.c', 'pdf.c'], libraries=["pdfium"], library_dirs=["lib"], include_dirs=["include", numpy.get_include()])
 setup(name="utils",
-      version="0.0.8",
+      version="0.0.9",
       ext_modules = [
         extension
     ]
