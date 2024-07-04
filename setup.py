@@ -1,6 +1,7 @@
 from distutils.core import setup, Extension
 import numpy 
 import sys
+import os
 from os import getenv
 
 PLATFORM = sys.platform
@@ -12,7 +13,7 @@ library_dirs = ['lib/' + os.environ['ARCH']]
 
 extension = Extension('utils', ['utils.c', 'pdf.c'], libraries=["pdfium"], library_dirs=library_dirs, include_dirs=["include", numpy.get_include()])
 setup(name="utils",
-      version="0.1.0",
+      version="0.1.1",
       ext_modules = [
         extension
     ]
