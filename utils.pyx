@@ -104,6 +104,8 @@ cdef extern from "wrapper.h":
         int height
     cdef char* get_pdf_page(int pagenumber, char* filepath)
     pdf_size get_pdf_page_size(int pagenumber, char* filepath)
+    cdef char* get_pdf_page_for_display(int pagenumber, char* filepath, int screen_width)
+    pdf_size get_pdf_page_size_for_display(int pagenumber, char* filepath, int screen_width)
 
 
 def get_page_size(pagenumber, filepath):
