@@ -124,7 +124,7 @@ cpdef get_pdf_page_bytes(int pagenumber, char* filepath):
     return PyBytes_FromStringAndSize(bytes, 4*size.width*size.height)
 
 cpdef get_pdf_page_bytes_for_display(int pagenumber, char* filepath, int screen_width):
-    size = get_pdf_page_size_for_display(pagenumber, filepath)
+    size = get_pdf_page_size_for_display(pagenumber, filepath, screen_width)
     cdef char* bytes = get_pdf_page_for_display(pagenumber, filepath, screen_width)
     return PyBytes_FromStringAndSize(bytes, 4*size.width*size.height)
 
