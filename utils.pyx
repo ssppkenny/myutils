@@ -113,17 +113,29 @@ def get_page_size(pagenumber, filepath):
     size = get_pdf_page_size(pagenumber, bpath)
     return size.width, size.height
 
+def get_page_size_for_display(pagenumber, filepath, screen_width):
+    bpath = bytes(filepath, 'utf-8')
+    size = get_pdf_page_size_for_display(pagenumber, bpath, screen_width)
+    return size.width, size.height
 
 cpdef get_pdf_page_bytes(int pagenumber, char* filepath):
     size = get_pdf_page_size(pagenumber, filepath)
     cdef char* bytes = get_pdf_page(pagenumber, filepath)
     return PyBytes_FromStringAndSize(bytes, 4*size.width*size.height)
 
+cpdef get_pdf_page_bytes_for_display(int pagenumber, char* filepath, int screen_width):
+    size = get_pdf_page_size_for_display(pagenumber, filepath)
+    cdef char* bytes = get_pdf_page_for_display(pagenumber, filepath, screen_width)
+    return PyBytes_FromStringAndSize(bytes, 4*size.width*size.height)
 
 def get_page(pagenumber, filepath):
     bpath = bytes(filepath, 'utf-8')
     return get_pdf_page_bytes(pagenumber, bpath)
 
+
+def get_page_for_display(pagenumber, filepath, screen_width):
+    bpath = bytes(filepath, 'utf-8')
+    return get_pdf_page_bytes_for_display(pagenumber, bpath, screen_width)
 
 ######################################################################
 # Mark two labels to be merged
